@@ -41,7 +41,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
         if (resId != 0) {
             imageBook.setImageResource(resId);
         } else {
-            imageBook.setImageResource(R.drawable.default_book);
+            imageBook.setImageResource(R.drawable.dacnhantam);
         }
 
         return view;

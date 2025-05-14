@@ -35,6 +35,15 @@
         <activity
             android:name=".AddVoucherActivity"
             android:exported="false" />
+        <activity
+            android:name=".CreateOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderReceiptActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RevenueActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

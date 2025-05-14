@@ -35,7 +35,7 @@ public class BookDetailActivity extends AppCompatActivity {
             if (resId != 0) {
                 imageDetailBook.setImageResource(resId);
             } else {
-                imageDetailBook.setImageResource(R.drawable.default_book);
+                imageDetailBook.setImageResource(R.drawable.dacnhantam);
             }
         }
     }
