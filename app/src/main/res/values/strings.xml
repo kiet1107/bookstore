@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">bookstore</string>
+    <string name="book_title">Tên sách</string>
+    <string name="book_quantity">Số lượng</string>
+    <string name="book_price">Giá</string>
+    <string name="book_genre">Thể loại</string>
+    <string name="book_image">Ảnh sách</string>
+    <string name="add_book">Thêm sách</string>
+    <string name="save">Lưu</string>
+    <string name="hint_title">Nhập tên sách</string>
+    <string name="hint_quantity">Nhập số lượng</string>
+    <string name="hint_price">Nhập giá (VND)</string>
+    <string name="hint_genre">Nhập thể loại</string>
+    <string name="hint_image">Nhập tên ảnh (book1, book2,...)</string>
+    <string name="view_books">Kho sách</string>
+    <string name="welcome">Chào mừng đến với Quản Lý Sách</string>
+    <string name="start">Bắt đầu</string>
+    <string name="revenue">Doanh thu</string>
+    <string name="offer">Offer</string>
+    <string name="create_order">Tạo đơn hàng</string>
+    <string name="voucher_name">Tên voucher</string>
+    <string name="voucher_discount">Số tiền giảm</string>
+    <string name="voucher_quantity">Số lượng</string>
+    <string name="add_voucher">Tạo voucher</string>
+    <string name="hint_voucher_name">Nhập tên voucher</string>
+    <string name="hint_voucher_discount">Nhập số tiền giảm (VND)</string>
+    <string name="hint_voucher_quantity">Nhập số lượng voucher</string>
+</resources>
