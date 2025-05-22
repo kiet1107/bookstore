@@ -8,14 +8,27 @@
     <Button
         android:id="@+id/buttonAddVoucher"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="62dp"
+        android:layout_gravity="end"
+        android:backgroundTint="#1E88E5"
         android:text="@string/add_voucher"
-        android:layout_gravity="end" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="DANH SÁCH VOUCHER"
+        android:textAlignment="center"
+        android:textColor="#3944AB"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/listViewVouchers"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1" />
 
 </LinearLayout>

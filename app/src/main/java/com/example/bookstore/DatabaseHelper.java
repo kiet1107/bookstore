@@ -11,12 +11,13 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "BookDB";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String TABLE_BOOKS = "books";
     private static final String TABLE_VOUCHERS = "vouchers";
     private static final String TABLE_ORDERS = "orders";
     private static final String KEY_ID = "id";
     private static final String KEY_TITLE = "title";
+    private static final String KEY_AUTHOR = "author";
     private static final String KEY_QUANTITY = "quantity";
     private static final String KEY_PRICE = "price";
     private static final String KEY_GENRE = "genre";
@@ -38,6 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String CREATE_BOOKS_TABLE = "CREATE TABLE " + TABLE_BOOKS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
                 + KEY_TITLE + " TEXT,"
+                + KEY_AUTHOR + " TEXT,"
                 + KEY_QUANTITY + " INTEGER,"
                 + KEY_PRICE + " REAL,"
                 + KEY_GENRE + " TEXT,"
@@ -69,7 +71,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public long addOrUpdateBook(String title, int quantity, double price, String genre, String image) {
+    public long addOrUpdateBook(String title, String author, int quantity, double price, String genre, String image) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -87,6 +89,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } else {
             if (cursor != null) cursor.close();
             values.put(KEY_TITLE, title);
+            values.put(KEY_AUTHOR, author);
             values.put(KEY_QUANTITY, quantity);
             values.put(KEY_PRICE, price);
             values.put(KEY_GENRE, genre);
@@ -107,12 +110,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID));
                 String title = cursor.getString(cursor.getColumnIndexOrThrow(KEY_TITLE));
+                String author = cursor.getString(cursor.getColumnIndexOrThrow(KEY_AUTHOR));
                 int quantity = cursor.getInt(cursor.getColumnIndexOrThrow(KEY_QUANTITY));
                 double price = cursor.getDouble(cursor.getColumnIndexOrThrow(KEY_PRICE));
                 String genre = cursor.getString(cursor.getColumnIndexOrThrow(KEY_GENRE));
                 String image = cursor.getString(cursor.getColumnIndexOrThrow(KEY_IMAGE));
 
-                Book book = new Book(id, title, quantity, price, genre, image);
+                Book book = new Book(id, title, author, quantity, price, genre, image);
                 bookList.add(book);
             } while (cursor.moveToNext());
         }
@@ -123,12 +127,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Book getBookById(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_BOOKS, new String[]{KEY_ID, KEY_TITLE, KEY_QUANTITY, KEY_PRICE, KEY_GENRE, KEY_IMAGE},
+        Cursor cursor = db.query(TABLE_BOOKS, new String[]{KEY_ID, KEY_TITLE, KEY_AUTHOR, KEY_QUANTITY, KEY_PRICE, KEY_GENRE, KEY_IMAGE},
                 KEY_ID + "=?", new String[]{String.valueOf(id)}, null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
             Book book = new Book(
                     cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID)),
                     cursor.getString(cursor.getColumnIndexOrThrow(KEY_TITLE)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(KEY_AUTHOR)),
                     cursor.getInt(cursor.getColumnIndexOrThrow(KEY_QUANTITY)),
                     cursor.getDouble(cursor.getColumnIndexOrThrow(KEY_PRICE)),
                     cursor.getString(cursor.getColumnIndexOrThrow(KEY_GENRE)),
@@ -143,6 +148,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null;
     }
 
+    // Các phương thức khác (addVoucher, getAllVouchers, v.v.) giữ nguyên như trước
     public long addVoucher(String name, double discount, int quantity) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -279,21 +285,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public double getTotalRevenue() {
         double totalRevenue = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT o." + KEY_BOOK_ID + ", o." + KEY_QUANTITY + ", b." + KEY_PRICE +
-                " FROM " + TABLE_ORDERS + " o JOIN " + TABLE_BOOKS + " b ON o." + KEY_BOOK_ID + "=b." + KEY_ID;
+        String query = "SELECT o." + KEY_BOOK_ID + ", o." + KEY_QUANTITY +
+                ", b." + KEY_PRICE +
+                " FROM " + TABLE_ORDERS + " o" +
+                " JOIN " + TABLE_BOOKS + " b ON o." + KEY_BOOK_ID + "=b." + KEY_ID;
         Cursor cursor = db.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {
             do {
                 int quantity = cursor.getInt(cursor.getColumnIndexOrThrow(KEY_QUANTITY));
                 double price = cursor.getDouble(cursor.getColumnIndexOrThrow(KEY_PRICE));
-                totalRevenue += price * quantity;
+                // Đảm bảo price và quantity không âm
+                quantity = Math.max(0, quantity);
+                price = Math.max(0, price);
+                // Tính doanh thu: price * quantity
+                double orderRevenue = price * quantity;
+                // Đảm bảo doanh thu không âm
+                totalRevenue += Math.max(0, orderRevenue);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
         return totalRevenue;
+
     }
+
 
     public List<SoldBook> getSoldBooks() {
         List<SoldBook> soldBooks = new ArrayList<>();

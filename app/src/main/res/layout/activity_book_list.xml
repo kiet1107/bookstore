@@ -5,6 +5,16 @@
     android:orientation="vertical"
     android:padding="8dp">
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="KHO SÁCH"
+        android:textAlignment="center"
+        android:textColor="#3946AB"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <ListView
         android:id="@+id/listViewBooks"
         android:layout_width="match_parent"

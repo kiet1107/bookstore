@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/nen2"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -29,11 +30,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="2"
-            android:text="Chào ngày mới, Peter!"
+            android:paddingStart="8dp"
+            android:text="Chào ngày mới !!!"
             android:textColor="#00A9EE"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:paddingStart="8dp" />
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- Space -->
@@ -45,19 +46,20 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:columnCount="2"
-        android:rowCount="3"
         android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:padding="16dp"
+        android:rowCount="3"
         android:useDefaultMargins="true">
 
         <Button
             android:id="@+id/buttonViewBooks"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnSpan="2"
+            android:layout_height="7dp"
             android:layout_rowWeight="2"
+            android:layout_columnSpan="2"
             android:layout_columnWeight="1"
+            android:backgroundTint="#039DE5"
             android:text="@string/view_books"
             android:textSize="18sp" />
 
@@ -67,6 +69,7 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
+            android:backgroundTint="#1E88E5"
             android:text="@string/add_book" />
 
         <Button
@@ -75,6 +78,7 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
+            android:backgroundTint="#1E88E5"
             android:text="@string/revenue" />
 
         <Button
@@ -83,7 +87,8 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:text="@string/offer" />
+            android:backgroundTint="#1E88E5"
+            android:text="Khuyến mãi" />
 
         <Button
             android:id="@+id/buttonCreateOrder"
@@ -91,6 +96,7 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
+            android:backgroundTint="#1E88E5"
             android:text="@string/create_order" />
 
     </GridLayout>

@@ -7,57 +7,86 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_book"
-        android:textSize="20sp"
+        android:layout_height="48dp"
+        android:text="THÊM SÁCH VÀO KHO HÀNG"
+        android:textAlignment="viewStart"
+        android:textColor="#3949AB"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/khung"
         android:hint="@string/hint_title"
         android:inputType="text"
-        android:layout_marginTop="8dp" />
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/editAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/khung"
+        android:hint="Nhập tên tác giả"
+        android:inputType="text"
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/editQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/khung"
         android:hint="@string/hint_quantity"
         android:inputType="number"
-        android:layout_marginTop="8dp" />
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/editPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/khung"
         android:hint="@string/hint_price"
         android:inputType="numberDecimal"
-        android:layout_marginTop="8dp" />
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/editGenre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/khung"
         android:hint="@string/hint_genre"
         android:inputType="text"
-        android:layout_marginTop="8dp" />
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/editImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/khung"
         android:hint="@string/hint_image"
         android:inputType="text"
-        android:layout_marginTop="8dp" />
+        android:padding="10dp" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="19dp" />
 
     <Button
         android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
+        android:layout_width="113dp"
+        android:layout_height="61dp"
+        android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:layout_gravity="center" />
+        android:backgroundTint="#1E88E5"
+        android:text="@string/save"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

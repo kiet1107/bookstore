@@ -8,7 +8,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/revenue_title"
+        android:text="DOANH THU CỬA HÀNG"
+        android:textColor="#394AAB"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -20,11 +21,12 @@
         android:textSize="16sp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="129dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/sold_books"
-        android:textSize="18sp"
+        android:textColor="#3944AB"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <ListView

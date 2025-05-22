@@ -8,7 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddBookActivity extends AppCompatActivity {
-    private EditText editTitle, editQuantity, editPrice, editGenre, editImage;
+    private EditText editTitle, editAuthor, editQuantity, editPrice, editGenre, editImage;
     private DatabaseHelper dbHelper;
 
     @Override
@@ -18,6 +18,7 @@ public class AddBookActivity extends AppCompatActivity {
 
         // Khởi tạo các view
         editTitle = findViewById(R.id.editTitle);
+        editAuthor = findViewById(R.id.editAuthor);
         editQuantity = findViewById(R.id.editQuantity);
         editPrice = findViewById(R.id.editPrice);
         editGenre = findViewById(R.id.editGenre);
@@ -32,13 +33,14 @@ public class AddBookActivity extends AppCompatActivity {
 
     private void saveBook() {
         String title = editTitle.getText().toString().trim();
+        String author = editAuthor.getText().toString().trim();
         String quantityStr = editQuantity.getText().toString().trim();
         String priceStr = editPrice.getText().toString().trim();
         String genre = editGenre.getText().toString().trim();
         String image = editImage.getText().toString().trim();
 
         // Kiểm tra dữ liệu đầu vào
-        if (title.isEmpty() || quantityStr.isEmpty() || priceStr.isEmpty() || genre.isEmpty() || image.isEmpty()) {
+        if (title.isEmpty() || author.isEmpty() || quantityStr.isEmpty() || priceStr.isEmpty() || genre.isEmpty() || image.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -50,7 +52,7 @@ public class AddBookActivity extends AppCompatActivity {
                 Toast.makeText(this, "Số lượng phải lớn hơn 0 và giá không âm", Toast.LENGTH_SHORT).show();
                 return;
             }
-            long result = dbHelper.addOrUpdateBook(title, quantity, price, genre, image);
+            long result = dbHelper.addOrUpdateBook(title, author, quantity, price, genre, image);
             if (result != -1) {
                 Toast.makeText(this, "Thêm/cập nhật sách thành công", Toast.LENGTH_SHORT).show();
                 setResult(RESULT_OK);

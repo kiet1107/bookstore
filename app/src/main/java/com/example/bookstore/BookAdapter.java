@@ -31,9 +31,11 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
         ImageView imageBook = view.findViewById(R.id.imageBook);
         TextView textTitle = view.findViewById(R.id.textTitle);
+        TextView textAuthor = view.findViewById(R.id.textAuthor);
         TextView textQuantity = view.findViewById(R.id.textQuantity);
 
         textTitle.setText(book.getTitle());
+        textAuthor.setText("Tác giả: " + book.getAuthor());
         textQuantity.setText(context.getString(R.string.book_quantity) + ": " + book.getQuantity());
 
         // Lấy ID của ảnh từ drawable
@@ -41,7 +43,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
         if (resId != 0) {
             imageBook.setImageResource(resId);
         } else {
-            imageBook.setImageResource(R.drawable.dacnhantam);
+            imageBook.setImageResource(R.drawable.coxanh);
         }
 
         return view;
