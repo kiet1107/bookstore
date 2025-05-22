@@ -6,8 +6,8 @@
     android:padding="16dp">
 
     <TextView
-        android:layout_width="216dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="TẠO ĐƠN HÀNG"
         android:textColor="#394AAB"
         android:textSize="20sp"
@@ -15,15 +15,15 @@
 
     <Spinner
         android:id="@+id/spinnerBook"
-        android:layout_width="380dp"
-        android:layout_height="49dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:prompt="@string/select_book" />
 
     <Spinner
         android:id="@+id/spinnerVoucher"
-        android:layout_width="379dp"
-        android:layout_height="47dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:prompt="@string/select_voucher" />
 
@@ -44,7 +44,7 @@
     <Button
         android:id="@+id/buttonCreateOrder"
         android:layout_width="wrap_content"
-        android:layout_height="61dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:backgroundTint="#1E88E5"
